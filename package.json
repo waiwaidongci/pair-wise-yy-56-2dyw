@@ -1,0 +1,35 @@
+{
+  "name": "steel-weld-ndt-repair-workbench",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "ng serve --host 0.0.0.0 --port 62056",
+    "dev": "ng serve --host 0.0.0.0 --port 62056",
+    "build": "ng build"
+  },
+  "dependencies": {
+    "@angular/animations": "20.2.4",
+    "@angular/common": "20.2.4",
+    "@angular/compiler": "20.2.4",
+    "@angular/core": "20.2.4",
+    "@angular/forms": "20.2.4",
+    "@angular/platform-browser": "20.2.4",
+    "@angular/router": "20.2.4",
+    "@apollo/client": "^3.13.9",
+    "@ngrx/store": "^20.1.0",
+    "@primeng/themes": "^20.1.1",
+    "apollo-angular": "11.0.0",
+    "graphql": "^16.11.0",
+    "primeicons": "^7.0.0",
+    "primeng": "^20.1.1",
+    "rxjs": "^7.8.2",
+    "tslib": "^2.8.1",
+    "zone.js": "^0.15.1"
+  },
+  "devDependencies": {
+    "@angular/build": "20.2.2",
+    "@angular/cli": "20.2.2",
+    "@angular/compiler-cli": "20.2.4",
+    "typescript": "~5.8.3"
+  }
+}

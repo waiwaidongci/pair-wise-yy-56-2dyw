@@ -1,0 +1,8 @@
+@import 'primeicons/primeicons.css';
+
+:root { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; color:#182230; background:#eef2f6; }
+* { box-sizing: border-box; } html,body { margin:0; min-width:320px; min-height:100%; }
+.page { padding:24px; max-width:1680px; margin:auto; }.page-head { display:flex; justify-content:space-between; gap:18px; align-items:flex-start; margin-bottom:18px; }.page h1 { margin:3px 0 6px; font-size:27px; }.page p { margin:0; color:#667085; }.eyebrow { color:#2563eb!important; font-size:12px; font-weight:700; }
+.card { background:#fff; border:1px solid #e1e7ef; border-radius:8px; padding:16px; box-shadow:0 1px 3px #1018280a; }.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:16px; }.grid-2 { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(300px,.7fr); gap:16px; }.metric { border-left:4px solid #2563eb; }.metric span,.metric small { display:block; color:#667085; }.metric strong { display:block; font-size:28px; margin:6px 0 2px; }.danger { color:#dc2626; }.warning { color:#d97706; }.success { color:#15803d; }
+.panel-title { font-size:17px; margin:0 0 14px; }.toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-bottom:14px; }.spacer { flex:1; }
+@media(max-width:1050px){.grid-4{grid-template-columns:1fr 1fr}.grid-2{grid-template-columns:1fr}}@media(max-width:620px){.page{padding:13px}.page-head{flex-direction:column}.grid-4{grid-template-columns:1fr}}

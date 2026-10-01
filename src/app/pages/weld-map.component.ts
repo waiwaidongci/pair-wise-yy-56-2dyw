@@ -7,6 +7,7 @@ import { DialogModule } from 'primeng/dialog'
 import { AccordionModule } from 'primeng/accordion'
 import { WeldState } from '../store/weld.reducer'
 import * as A from '../store/weld.actions'
+import { SyncService } from '../sync/sync.service'
 import type { Weld } from '../types'
 
 @Component({
@@ -22,11 +23,18 @@ import type { Weld } from '../types'
 })
 export class WeldMapComponent {
   readonly store = inject(Store<{ welds: WeldState }>)
+  readonly sync = inject(SyncService)
   state!: WeldState
   planDialog = false
   constructor() { this.store.select('welds').subscribe((state) => this.state = state) }
   get selected() { return this.state?.welds.find((item) => item.id === this.state.selectedId) }
   select(weld: Weld) { this.store.dispatch(A.selectWeld({ id: weld.id })) }
   color(weld: Weld) { return weld.status === '合格' || weld.status === '已关闭' ? '#16a34a' : weld.status === '返修中' || !weld.qualificationValid ? '#dc2626' : weld.status === '待复检' ? '#7c3aed' : '#f59e0b' }
-  createPlan() { this.store.dispatch(A.createPlan({ plan:{ id:`IP-${Date.now().toString().slice(-6)}`, date:'2026-09-30', method:'UT + MT', weldIds:['W-105','W-106','W-108'], inspector:'陈锋', state:'待执行' } })); this.planDialog = false }
+  createPlan() {
+    this.sync.schedulePlan({
+      id:`IP-${Date.now().toString().slice(-6)}`, date:'2026-09-30', method:'UT + MT',
+      weldIds:['W-105','W-106','W-108'], inspector:'陈锋', state:'待执行',
+    }, '陈锋')
+    this.planDialog = false
+  }
 }

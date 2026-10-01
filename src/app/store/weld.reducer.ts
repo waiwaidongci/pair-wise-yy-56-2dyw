@@ -8,6 +8,7 @@ export interface WeldState {
   selectedId: string
   statusFilter: string
   locked: boolean
+  pendingResign: boolean
   version: number
   audit: AuditEvent[]
 }
@@ -18,11 +19,21 @@ const audit: AuditEvent[] = [
   { id: 'AE-3', time: '14:20', actor: '系统', action: '资质预警', target: 'W-109', detail: '焊工证书 2026-10-01 到期，不得列入后续检测计划' },
 ]
 
-export const initialState: WeldState = { welds: [], plans: [], selectedId: '', statusFilter: '全部', locked: false, version: 12, audit }
+export const initialState: WeldState = { welds: [], plans: [], selectedId: '', statusFilter: '全部', locked: false, pendingResign: false, version: 12, audit }
 
 export const weldReducer = createReducer(
   initialState,
   on(A.loadWeldsSuccess, (state, { welds, plans }) => ({ ...state, welds, plans, selectedId: state.selectedId || welds[0]?.id || '' })),
+  on(A.syncStateChanged, (state, { welds, plans, locked, version, audit, pendingResign }) => ({
+    ...state,
+    welds,
+    plans,
+    locked,
+    version,
+    audit,
+    pendingResign,
+    selectedId: state.selectedId || welds[0]?.id || '',
+  })),
   on(A.selectWeld, (state, { id }) => ({ ...state, selectedId: id })),
   on(A.filterStatus, (state, { status }) => ({ ...state, statusFilter: status })),
   on(A.advanceWeld, (state, { id, status }) => ({ ...state, version: state.version + 1, welds: state.welds.map((weld) => weld.id === id ? { ...weld, status } : weld), audit: [{ id: `AE-${Date.now()}`, time: new Date().toLocaleTimeString('zh-CN', { hour:'2-digit', minute:'2-digit', hour12:false }), actor:'当前审核人', action:'状态流转', target:id, detail:`状态变更为 ${status}` }, ...state.audit] })),

@@ -6,7 +6,7 @@ import { TagModule } from 'primeng/tag'
 @Component({
   selector:'app-root', standalone:true, imports:[RouterOutlet,RouterLink,RouterLinkActive,ButtonModule,TagModule],
   template:`
-    <header class="topbar"><div class="brand"><span>焊</span><div><b>钢结构焊缝质量平台</b><small>WELD & NDT CONTROL</small></div></div><nav><a routerLink="/overview" routerLinkActive="active">台账总览</a><a routerLink="/map" routerLinkActive="active">构件定位</a><a routerLink="/inspections" routerLinkActive="active">检测返修</a><a routerLink="/approvals" routerLinkActive="active">审核锁定</a></nav><span class="spacer"></span><p-tag value="项目：东海会展中心" severity="success" /><p-button label="新建检测计划" icon="pi pi-plus" /></header>
+    <header class="topbar"><div class="brand"><span>焊</span><div><b>钢结构焊缝质量平台</b><small>WELD & NDT CONTROL</small></div></div><nav><a routerLink="/overview" routerLinkActive="active">台账总览</a><a routerLink="/map" routerLinkActive="active">构件定位</a><a routerLink="/inspections" routerLinkActive="active">检测返修</a><a routerLink="/sync" routerLinkActive="active">断网补录</a><a routerLink="/approvals" routerLinkActive="active">审核锁定</a></nav><span class="spacer"></span><p-tag value="项目：东海会展中心" severity="success" /><p-button label="新建检测计划" icon="pi pi-plus" /></header>
     <router-outlet />
   `,
   styles:[`
